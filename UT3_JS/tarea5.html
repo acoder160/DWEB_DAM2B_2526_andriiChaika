@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="resultado"></p>
+
+<script>
+    let nombre = prompt("ingresa tu nombre", "xxxxxxxx")
+    let apellido = prompt("ingresa tu apellido", "xxxxxxxx")
+    let numero1 = prompt("ingresa primer numero", "0")
+    let numero2 = prompt("ingresa segundo numero", "0")
+
+    console.log(nombre)
+    parseInt(numero1)
+    parseInt(numero2)
+
+    let resultado = `Nombre: ${nombre}<br>Apellido: ${apellido}<br>Los numeros tecleados han sido: ${numero1} y ${numero2}<br>
+    Suma: ${numero1 + numero2}<br> Resta: ${numero1 / numero2}<br> Producto: ${numero1 * numero2}<br>Cociente: ${numero1/numero2}`
+
+    document.getElementById("resultado").innerHTML = resultado
+
+    //lamatablemente windows alert no sabe incluir los tags asi que hay que usar \n
+   
+    window.alert(`Nombre: ${nombre}\nApellido: ${apellido} \nLos numeros tecleados han sido: ${numero1} y ${numero2}
+    \nSuma: ${numero1 + numero2} \nResta: ${numero1 / numero2} \nProducto: ${numero1 * numero2} \nCociente: ${numero1/numero2}`)
+
+</script>
+
+
+
+    
+</body>
+</html>
