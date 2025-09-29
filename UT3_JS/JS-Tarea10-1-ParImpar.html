@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="id">Aqui sera el resultado</h1>
+    <p id="id2">Resultado 2</p>
+    <h1 id="id3">Resultado 3 </h1>
+    <script>
+        let num = prompt("Introuce el numero")
+        
+
+        // variante 1 funcion declarada
+        function funcionDesclarada(numero) {
+            if (num % 2 === 0) {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+
+         let y = function (numero) {if (numero % 2 === 0) {
+                document.getElementById("id3").innerHTML = "Es par"
+            }
+            else {
+                document.getElementById("id3").innerHTML = "Es inpar"
+            }}    
+
+
+
+            // anonima
+        let x = (numero) => {if (numero % 2 === 0) {
+                document.getElementById("id2").innerHTML = "Es par"
+            }
+            else {
+                document.getElementById("id2").innerHTML = "Es inpar"
+            }}
+
+
+
+
+
+
+
+
+        document.getElementById("id").innerHTML = funcionDesclarada(num);
+        x(num);
+        y(num);
+
+
+    </script>
+    
+</body>
+</html>
