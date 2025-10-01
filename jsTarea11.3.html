@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="metodo1"></p>
+    <p id="metodo2"></p>
+    <p id="metodo3"></p>
+    
+    <script>
+        const persona = {nombre:"Juana ", apellido:"Calamidad ", edad:34, nacionalidad: "Americana "}
+        let txt = Object.values(persona) // mostrar solo valores
+        document.getElementById("metodo1").innerHTML = txt
+
+        let txt2 = Object.keys(persona) // mostrar solo claves
+        document.getElementById("metodo2").innerHTML = txt2
+
+        let txt3 = Object.entries(persona) // mostrar pares
+        document.getElementById("metodo3").innerHTML = txt3
+        
+    </script>
+</body>
+</html>
