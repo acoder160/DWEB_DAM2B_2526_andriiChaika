@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="main">MIRAR EL LOG :)</p>
+    
+   
+
+    
+    <script>
+         // Ejer1. Define una función constructora de objetos Personaje
+         //  (propiedades: primerNombre, edadAños y estadoCivil) y crea los objetos personaje1 y personaje2.
+         //  Muestra información de los mismos haciendo uso de la sintaxis adecuada.
+        class Personaje{
+            primerNombre
+            edadAnos
+            estadoCivil
+            
+            set setPrimerNombre(nuevoNombre){
+                this.primerNombre = nuevoNombre
+            }
+            get getNombre(){
+                return this.primerNombre
+            }
+
+            set setEdadAnos(edad){
+                this.edadAnos = edad
+            }
+
+            get getEdadAnos(){
+                return this.edadAnos
+            }
+
+            set setEstadoCivil(estadoCivil){
+                this.estadoCivil = estadoCivil
+            }
+
+            get getEstadoCivil(){
+                return this.estadoCivil
+            }
+
+            constructor(primerNombre, edadAnos, estadoCivil){
+                this.edadAnos = edadAnos
+                this.estadoCivil = estadoCivil
+                this.primerNombre = primerNombre
+            }
+
+
+        }
+    const personaje1 = new Personaje("Fernando", 23, "Soltero")
+    const personaje2 = new Personaje("Juan", 69, "Casado")
+
+    console.log(personaje1)
+    console.log(personaje2)
+
+       
+        
+    </script>
+</body>
+</html>

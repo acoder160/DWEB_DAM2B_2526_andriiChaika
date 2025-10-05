@@ -12,15 +12,15 @@
 
 
 
-
-    let frase = prompt("Escribe alguna frase")
-    
-
-
-function MayusMinus(frase){
-    if (frase === frase.toUpperCase){
-        document.getElementById("resultado")
-    }
+function MayusMinus(){
+	let frase = prompt("Escribe alguna frase")
+    if (frase === frase.toUpperCase()){
+        document.getElementById("resultado").innerHTML = "Frase esta en mayuscula"
+    } else if (frase === frase.toLowerCase()){
+		document.getElementById("resultado").innerHTML = "Frase esta en minuscula"
+	} else {
+		document.getElementById("resultado").innerHTML = "Frase contiene ambas, mayusculas y minuscaulas"
+	}
 }
 
 </script>

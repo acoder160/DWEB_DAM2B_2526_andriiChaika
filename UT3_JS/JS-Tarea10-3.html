@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Argumentos</title>
+</head>
+<body>
+	
+	<p id="resultado"></p>
+<script>
+
+
+function myFunction(a, b) {
+  return arguments.length; // retorna cantidad de argumentos en este caso se pasa solo un argumento, asu que el valor en la consola sera 1
+}
+console.log(myFunction(6));
+
+// ¿Y este otro?
+
+function myFunction(a, b) {
+  return arguments.length; // retorna cantidad de argumentos en este caso se pasa solo un argumento, asu que el valor en la consola sera 2
+}
+console.log(myFunction(6,5));
+
+
+// ¿Y este otro?
+
+function myFun(a, b, ...manyMoreArgs) {
+  console.log("a", a);
+  console.log("b", b);
+  console.log("manyMoreArgs", manyMoreArgs); // retorna valores de a y b y en manyMoreArgs retorna un array con argumentos que quedan
+}
+
+myFun("one", "two", "three", "four", "five", "six");
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="main">MIRAR EL LOG :)</p>
+    <p id="personaje"></p>
+    
+   
+
+    
+    <script>
+         // Ejer1. Define una función constructora de objetos Personaje
+         //  (propiedades: primerNombre, edadAños y estadoCivil) y crea los objetos personaje1 y personaje2.
+         //  Muestra información de los mismos haciendo uso de la sintaxis adecuada.
+        class Personaje{
+            primerNombre
+            edadAnos
+            estadoCivil
+            
+            set setPrimerNombre(nuevoNombre){
+                this.primerNombre = nuevoNombre
+            }
+            get getNombre(){
+                return this.primerNombre
+            }
+
+            set setEdadAnos(edad){
+                this.edadAnos = edad
+            }
+
+            get getEdadAnos(){
+                return this.edadAnos
+            }
+
+            set setEstadoCivil(estadoCivil){
+                this.estadoCivil = estadoCivil
+            }
+
+            get getEstadoCivil(){
+                return this.estadoCivil
+            }
+
+            constructor(primerNombre, edadAnos, estadoCivil){
+                this.edadAnos = edadAnos
+                this.primerNombre = primerNombre
+                this.estadoCivil = estadoCivil
+            }
+
+
+        }
+    const personaje1 = new Personaje("Fernando", 23, "Soltero")
+    const personaje2 = new Personaje("Juan", 69, "Casado")
+    console.log(personaje1)
+    personaje2.nacionalidad = "Española"
+    console.log(personaje2)
+    personaje2.infoTotal = function(){
+        return (`Personaje se llama ${this.getNombre} tiene ${this.getEdadAnos} años y su estado civil es: ${this.getEstadoCivil}. Su nacionalidad es ${this.nacionalidad}`)
+    }
+    
+    document.getElementById("personaje").innerHTML = personaje2.infoTotal()
+    
+
+       
+        
+    </script>
+</body>
+</html>

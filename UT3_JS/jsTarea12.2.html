@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="main"></p>
+    
+    
+    <script>
+        class persona{
+            nombre = "Camillo"
+            edad = 22
+            
+            set setNombre(nuevoNombre){
+                this.nombre = nuevoNombre
+            }
+            get getNombre(){
+                return nombre
+            }
+        }
+    const persona1 = new persona
+    let nombre = prompt("Introduce nuevo nombre")
+    persona1.setNombre = nombre
+    document.getElementById("main").innerHTML = `Persona se llama ${persona1.getNombre}`
+
+       
+        
+    </script>
+</body>
+</html>

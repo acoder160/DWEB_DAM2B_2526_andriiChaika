@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="main"></p>
+    
+    
+    <script>
+        class Coche{
+            nombre = "Mervedes"
+            Caballos = 300
+            
+            set setNombre(nuevoNombre){
+                this.nombre = nuevoNombre
+            }
+            get getNombre(){
+                return this.nombre
+            }
+        }
+    const coche1 = new Coche
+    let nombre = prompt("Introduce nuevo nombre")
+    coche1.setNombre = nombre
+    document.getElementById("main").innerHTML = `Coche se llama ${coche1.getNombre}`
+
+       
+        
+    </script>
+</body>
+</html>
