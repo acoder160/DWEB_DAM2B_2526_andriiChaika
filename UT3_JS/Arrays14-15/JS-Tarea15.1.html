@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="res"></p>
+    <label>Introduce palabras separadas por un ESPACIO </label><br>
+    <textarea id="texto" placeholder="Escribe las palabras aqui"></textarea>
+    <button onclick="enviar()">Enviar</button>
+
+    <script>
+       function enviar(){
+         document.getElementById("res").innerHTML = ""
+        let palabras = document.getElementById("texto").value.split(" ")
+        console.log(palabras)
+       document.getElementById("res").innerHTML += `Cantidad de palabras es ${palabras.length} <br>`
+
+       //primero y ultimo
+        document.getElementById("res").innerHTML += `Primera palabra es ${palabras[0]} <br>`
+        document.getElementById("res").innerHTML += `Ultima palabra es ${palabras[palabras.length - 1]} <br>`
+
+
+
+
+       }
+    </script>
+</body>
+</html>

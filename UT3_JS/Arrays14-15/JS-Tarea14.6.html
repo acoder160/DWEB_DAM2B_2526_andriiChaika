@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="res"></p>
+
+    <script>
+        let sueldos = []
+        cargar()
+        calcularGastos(sueldos)
+        
+
+        function cargar(){
+            sueldos = [1655, 3234, 2101, 1200, 2344]
+        }
+
+        function calcularGastos(array){
+            let sumar = 0
+            for (let i = 0; i < array.length; i++) {
+            document.getElementById("res").innerHTML += `El empleado numero ${i + 1} tiene un sueldo de ${array[i]}€ <br>`
+                sumar += array[i]
+            }
+            document.getElementById("res").innerHTML += `El sueldo total es de ${sumar}€`
+        }
+
+    </script>
+</body>
+</html>

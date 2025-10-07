@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Número 1: <input type="number" id="num1"></label>
+    <label>Número 2: <input type="number" id="num2"></label>
+    <label>Número 3: <input type="number" id="num3"></label>
+    <label>Número 4: <input type="number" id="num4"></label>
+    <label>Número 5: <input type="number" id="num5"></label>
+    <button onclick="multiplicar()">Enviar</button>
+    <p>Multiplicamos por 5 los numeros introducidos</p>
+    <p id="res"></p>
+
+    <script>
+        
+    function multiplicar(){
+        let numeros = []
+        numeros[0] = Number(document.getElementById("num1").value)
+        numeros[1] = Number(document.getElementById("num2").value)
+        numeros[2] = Number(document.getElementById("num3").value)
+        numeros[3] = Number(document.getElementById("num4").value)
+        numeros[4] = Number(document.getElementById("num5").value)
+
+        for (i = 0; i < numeros.length; i++)
+    {   
+        document.getElementById("res").innerHTML += `${numeros[i]} * 5 = ${numeros[i] * 5}, `
+    }
+    }
+
+    </script>
+</body>
+</html>
