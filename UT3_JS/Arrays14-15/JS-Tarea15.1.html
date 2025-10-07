@@ -6,10 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <p id="res"></p>
+    
     <label>Introduce palabras separadas por un ESPACIO </label><br>
     <textarea id="texto" placeholder="Escribe las palabras aqui"></textarea>
     <button onclick="enviar()">Enviar</button>
+    <p id="res"></p>
 
     <script>
        function enviar(){
@@ -22,8 +23,25 @@
         document.getElementById("res").innerHTML += `Primera palabra es ${palabras[0]} <br>`
         document.getElementById("res").innerHTML += `Ultima palabra es ${palabras[palabras.length - 1]} <br>`
 
+        //orden inversivo
+        document.getElementById("res").innerHTML += `Orden inversivo del texto: <br>`
+        for (let i = (palabras.length - 1); i >= 0; i--) {
+            document.getElementById("res").innerHTML += `${palabras[i]}...`
+        }
+        document.getElementById("res").innerHTML += `<br>`
 
-
+        //.sort()
+        document.getElementById("res").innerHTML += `Ordenado de a-z: <br>`
+        palabras.sort()
+        for (let i = 0; i < palabras.length; i++) {
+            document.getElementById("res").innerHTML += `${palabras[i]}...`
+        }
+        //reverso
+        document.getElementById("res").innerHTML += `<br>Ordenado de a-z: <br>`
+        palabras.sort().reverse()
+        for (let i = 0; i < palabras.length; i++) {
+            document.getElementById("res").innerHTML += `${palabras[i]}...`
+        }
 
        }
     </script>
