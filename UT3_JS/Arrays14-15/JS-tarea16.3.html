@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="main"></p>
+
+    <script>
+     const tareas = [
+        { titulo: "Diseño UI", prioridad: "alta", completada: true },
+        { titulo: "Backend API", prioridad: "media", completada: false},
+        { titulo: "Testing", prioridad: "alta", completada: false },
+        { titulo: "Documentación", prioridad: "baja", completada: true }
+            ];
+
+            let filtreado = tareas.filter(j => j.prioridad == "alta" && j.completada == false)
+
+            for (let i = 0; i < filtreado.length; i++) {
+                document.getElementById("main").innerHTML += `${filtreado[i].titulo} con una prioridad ${filtreado[i].prioridad} y no completada`
+                
+            }
+
+    </script>
+</body>
+</html>

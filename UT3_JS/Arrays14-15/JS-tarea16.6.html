@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="main"></p>
+
+    <script>
+       const estudiantes = [
+        { nombre: "Ana", notas: [7, 9, 8] },
+        { nombre: "Luis", notas: [5, 6, 4] },
+        { nombre: "Marta", notas: [9, 10, 9] },
+        { nombre: "Jorge", notas: [6, 5, 7] }
+    ];
+
+        const estudiantesFiltreado = estudiantes.filter(e => {
+            let suma = 0
+            for (let i = 0; i < e.notas.length; i++) {
+                suma += e.notas[i]
+            }
+            let prom = suma / e.notas.length
+            if (prom > 7){
+                return true
+            } else {
+                return false
+            }
+        })
+
+        const estudiantesTotal = estudiantesFiltreado.reduce((acum, estudiante) => {
+            let suma = 0
+            for (let i = 0; i < estudiante.notas.length; i++) {
+                suma += estudiante.notas[i]
+            }
+            acum.promedioGenral += (suma / estudiante.notas.length)
+
+            return acum
+        }, {
+            promedioGenral: 0
+        })
+
+        document.getElementById("main").innerHTML = `Promedio total de las notas de estudiantes que han superado promedio de 7 es: ${estudiantesTotal.promedioGenral / estudiantesFiltreado.length}`
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="main"></p>
+
+    <script>
+       const usuarios = [
+            { nombre: "Ana", actividad: 120, premium: true },
+            { nombre: "Luis", actividad: 50, premium: false },
+            { nombre: "Marta", actividad: 200, premium: true },
+            { nombre: "Jorge", actividad: 80, premium: false }
+        ];
+        
+        let usuariosPuntos = usuarios.map(u => {
+            return {
+                nombre: u.nombre,
+                puntos: u.actividad * (u.premium ? 10 : 5)
+            }
+        })
+
+        let usuariosFiltreado = usuariosPuntos.filter(u => u.puntos > 1000);
+
+        for (let i = 0; i < usuariosPuntos.length; i++) {
+            document.getElementById("main").innerHTML += `${usuariosFiltreado[i].nombre} con ${usuariosFiltreado[i].puntos} puntos <br>`
+            
+        }
+
+    </script>
+</body>
+</html>

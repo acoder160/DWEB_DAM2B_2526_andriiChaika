@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="main"></p>
+
+    <script>
+        const jugadores = [
+        { nombre: "Alex", puntuacion: 1200, rol: "Support" },
+        { nombre: "Bea", puntuacion: 1500, rol: "ADC" },
+        { nombre: "Carlos", puntuacion: 900, rol: "Jungler" },
+        { nombre: "Diana", puntuacion: 1700, rol: "Mid" }
+                         ];
+
+        // calculamos el promedio
+        let suma = 0
+        for (let i = 0; i < jugadores.length; i++) {
+            suma += jugadores[i].puntuacion
+        }
+        let promedio = suma / jugadores.length
+
+        for (let i = 0; i < jugadores.length; i++) {
+            document.getElementById("main").innerHTML += `Jugador ${jugadores[i].nombre} con  puntuacion de ${jugadores[i].puntuacion} (${jugadores[i].puntuacion > promedio ? `que esta por encima del promedio` : `que esta por debajo del promedio`}) y su rol es ${jugadores[i].rol} <br>`
+            
+        }
+
+
+    </script>
+
+
+
+</body>
+</html>

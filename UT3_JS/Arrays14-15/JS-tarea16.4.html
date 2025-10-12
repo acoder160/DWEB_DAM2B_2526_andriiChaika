@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="main"></p>
+
+    <script>
+        const ventas = [
+            { producto: "Laptop", cantidad: 3, precio: 1000 },
+            { producto: "Monitor", cantidad: 5, precio: 200 },
+            { producto: "Teclado", cantidad: 10, precio: 50 }
+            ];
+
+        const resumen = ventas.reduce((acum, venta) => {
+            acum.totalingresos += (Number(venta.cantidad) * Number(venta.precio))
+            acum.totalProducto += venta.cantidad
+
+            acum.productosVendidos.push(venta.producto)
+
+            return acum
+         }, {
+            totalingresos: 0, totalProducto: 0, productosVendidos: []
+
+         }
+        )
+
+            document.getElementById("main").innerHTML += `Total ingresos: ${resumen.totalingresos}, cantidad de productos vendidos ${resumen.totalProducto} productos vendidos: ${resumen.productosVendidos.join(`, `)}`
+            
+        
+
+    </script>
+</body>
+</html>

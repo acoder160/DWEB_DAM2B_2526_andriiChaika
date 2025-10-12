@@ -15,7 +15,7 @@
     <script>
        function enviar(){
          document.getElementById("res").innerHTML = ""
-        let palabras = document.getElementById("texto").value.split(" ")
+        let palabras = document.getElementById("texto").value.split(" ") 
         console.log(palabras)
        document.getElementById("res").innerHTML += `Cantidad de palabras es ${palabras.length} <br>`
 
@@ -37,7 +37,7 @@
             document.getElementById("res").innerHTML += `${palabras[i]}...`
         }
         //reverso
-        document.getElementById("res").innerHTML += `<br>Ordenado de a-z: <br>`
+        document.getElementById("res").innerHTML += `<br>Ordenado de z-a: <br>`
         palabras.sort().reverse()
         for (let i = 0; i < palabras.length; i++) {
             document.getElementById("res").innerHTML += `${palabras[i]}...`
