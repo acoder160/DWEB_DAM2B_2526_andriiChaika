@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea DOM: Lista de Tareas Interactiva</title>
+    
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background-color: #f4f7f6;
+        }
+        #app-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        #nuevaTarea, #agregarBtn {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        #nuevaTarea {
+            width: 75%;
+            margin-right: 10px;
+        }
+        #agregarBtn {
+            width: 20%;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #agregarBtn:hover {
+            background-color: #0056b3;
+        }
+        #listaTareas {
+            list-style: none; /* Elimina los puntos por defecto */
+            padding: 0;
+            margin-top: 20px;
+        }
+        .tarea-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .tarea-item:hover {
+            background: #dee2e6;
+        }
+        .tarea-texto {
+            flex-grow: 1;
+            cursor: pointer;
+        }
+        /* Clase que se usará para el estilo de tarea completada (se manipula con JS) */
+        .completada .tarea-texto {
+            text-decoration: line-through; /* Uso forzado de .style.textDecoration */
+            color: #888;
+        }
+        .eliminar-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app-container">
+        <h1>Mi Lista de Tareas DOM</h1>
+        
+        <input type="text" id="nuevaTarea" placeholder="Escribe una nueva tarea...">
+        <button id="agregarBtn">Añadir Tarea</button>
+
+        <h2>Tareas Pendientes:</h2>
+        
+        <ul id="listaTareas">
+
+            </ul>
+    </div>
+
+    <script>
+        // ----------------------------------------------------------------------
+        // PUNTO 1: SELECCIÓN DE ELEMENTOS FIJOS
+        // ----------------------------------------------------------------------
+        // Objetivo: Obtener referencias a los elementos del HTML que ya existen.
+        // Método DOM requerido: document.getElementById()
+        
+        // a) Referencia al campo de entrada de texto
+        const inputTarea = document.getElementById("nuevaTarea"); // Reemplaza 'null' con la llamada DOM correcta.
+        
+        // b) Referencia al botón "Añadir Tarea"
+        const botonAgregar = document.getElementById("agregarBtn"); // Reemplaza 'null' con la llamada DOM correcta.
+        
+        // c) Referencia a la lista <ul> donde se insertarán las tareas
+        const lista = document.getElementById("listaTareas"); // Reemplaza 'null' con la llamada DOM correcta.
+
+        // ----------------------------------------------------------------------
+        // PUNTO 2: LÓGICA PARA AÑADIR UNA TAREA
+        // ----------------------------------------------------------------------
+        // Objetivo: Asignar una función al evento 'click' del botón agregar.
+        // Métodos DOM requeridos: onclick, createElement, innerHTML, appendChild
+        
+        // Asigna una función anónima o una función llamada (como prefieras) al evento onclick
+        // de 'botonAgregar'.
+        
+        botonAgregar.onclick = function() {
+            const textoTarea = inputTarea.value.trim()
+
+            if (textoTarea === "") {
+                alert("La tarea no puede estar vacía.");
+                return;
+            }
+
+
+            // 2.1 CREACIÓN DEL ELEMENTO <li>
+            // Método DOM requerido: document.createElement('li')
+            // Crea un nuevo elemento <li> (tarea) y asigna su clase CSS 'tarea-item'.
+            const li = document.createElement("li") // Implementa la creación del elemento <li>.
+            li.classList.add("tarea-item")
+            
+            // 2.2 CREACIÓN DEL CONTENIDO DE TEXTO Y EL BOTÓN DE ELIMINAR
+            // Debes crear un elemento <span> para el texto de la tarea y un <button> para eliminar.
+            
+            // a) Crear el <span> y asignarle el texto usando .innerHTML
+            const spanTexto = document.createElement("span") // Implementa la creación y el contenido.
+            spanTexto.innerHTML = textoTarea
+            spanTexto.classList.add("tarea-texto")
+            
+            
+            
+            
+            // b) Crear el botón de eliminar y asignarle el texto "Eliminar" y la clase CSS 'eliminar-btn'.
+            const botonEliminar = document.createElement("button"); // Implementa la creación y el contenido.
+            botonEliminar.innerHTML = "Eliminar"
+            botonEliminar.className = "eliminar-btn"
+            
+
+
+            // 2.3 ESTRUCTURA INTERNA
+            // Método DOM requerido: element.appendChild()
+            // Añade el <span> y el botón al elemento <li>.
+            li.appendChild(spanTexto)
+            spanTexto.appendChild(botonEliminar)
+
+            // 2.4 INSERCIÓN FINAL
+            // Método DOM requerido: parent.appendChild(child)
+            // Añade el elemento <li> (que ya contiene el texto y el botón) a la lista <ul>.
+            lista.appendChild(li);
+            
+            // 2.5 LIMPIEZA
+            // Limpia el valor del input.
+            inputTarea.value = ""
+        
+
+            // ------------------------------------------------------------------
+            // PUNTO 3: LÓGICA PARA ELIMINAR UNA TAREA
+            // ------------------------------------------------------------------
+            // Objetivo: Implementar la funcionalidad de eliminación en el botón recién creado.
+            // Método DOM requerido: parentNode.removeChild(child)
+            
+            botonEliminar.onclick = function(event) {
+                // event.stopPropagation() es útil aquí para evitar que se ejecute la lógica de 'completar' (Punto 4).
+                event.stopPropagation(); 
+                
+                // Obtén el elemento padre (el <li>) del botón. 
+                const itemAEliminar = li;
+                
+                // Obtén el padre del <li> (que es la <ul>, 'lista').
+                const listaPadre = lista;
+
+                // Elimina el <li> de la <ul>.
+                listaPadre.removeChild(li);
+            };
+
+            // ------------------------------------------------------------------
+            // PUNTO 4: LÓGICA PARA MARCAR COMO COMPLETADA
+            // ------------------------------------------------------------------
+            // Objetivo: Cambiar el estilo del texto de la tarea al hacer clic.
+            // Métodos DOM requeridos: onclick, element.style.property
+            
+            spanTexto.onclick = function() {
+                // Al hacer clic en el texto, el <li> padre debe cambiar de estilo.
+                const item = this.parentNode; // Referencia al <li>
+                
+                // a) Verifica si el <li> ya tiene el estilo (por ejemplo, verificando su clase CSS o un atributo data-*).
+                const estaCompletada = item.classList.contains('completada');
+
+                if (estaCompletada) {
+                    // b) Si está completada: quita el estilo tachado.
+                    /*
+                    this.style.textDecoration = "none"; // Usa .style.textDecoration
+                    */
+                    item.classList.remove('completada');
+                } else {
+                    // c) Si NO está completada: aplica el estilo tachado.
+                    /*
+                    this.style.textDecoration = "line-through"; // Usa .style.textDecoration
+                    this.style.color = "#888"
+                    */
+                    item.classList.add('completada');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
