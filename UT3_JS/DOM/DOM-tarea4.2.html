@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<button type="button" onclick="myFunction(0)">Letra Grande</button>
+	<button type="button" onclick="myFunction(1)">Letra Pequeña</button>
+	<p>Maria</p>
+	<p>Ana</p>
+	<p>Sanz</p>
+
+	<script>
+
+		function myFunction(x) {
+            const colores = [
+          "red",
+          "blue",
+          "green",
+          "yellow",
+          "orange",
+          "purple",
+          "pink",
+          "cyan",
+          "lime",
+          "gold"
+            ]
+            let indice = Math.floor(Math.random() * colores.length); // Math.floor rendondea numeros hacea abajo por ejemplo 5.1 = 5;
+        
+            let texto = document.getElementsByTagName("p")
+            if (x == 0){
+                for (let i = 0; i < texto.length; i++){
+                    let currentSize = window.getComputedStyle(texto[i]).fontSize
+                    let newSize = parseInt(currentSize) + 10;
+                    texto[i].style.fontSize = newSize + "px"
+                    texto[i].style.color = colores[indice]
+                }
+                  
+            }
+            if (x == 1){
+                for (let i = 0; i < texto.length; i++){
+                    let currentSize = window.getComputedStyle(texto[i]).fontSize
+                    let newSize = parseInt(currentSize) - 10;
+                    texto[i].style.fontSize = newSize + "px"
+                    texto[i].style.color = colores[indice]
+                }
+            }
+			
+		}
+	</script>
+</body>
+</html>
+
