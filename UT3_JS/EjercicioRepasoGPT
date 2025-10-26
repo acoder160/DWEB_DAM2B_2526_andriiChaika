@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>EXAMEN JS (PARTE 1) – Juego “Adivina el Número”</title>
+    <style>
+      /* Estilos básicos para el cuerpo y botones */
+      body {
+        font-family: Arial;
+        margin: 20px;
+      }
+      button {
+        padding: 10px;
+        margin-top: 10px;
+      }
+      #info,
+      #resultado {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>EXAMEN JS (PARTE 1) – Juego “Adivina el Número”</h1>
+
+    <!-- Botones de interacción -->
+    <button onclick="Iniciar()">Iniciar Partida</button>
+    <button onclick="Adivinar()">Intentar Adivinar</button>
+
+    <!-- Elementos donde se mostrará información y resultados -->
+    <p id="info"></p>
+    <p id="resultado"></p>
+
+    <script>
+      // Variables globales para controlar el juego
+
+      // ============================================================
+      // CLASE Jugador: representa al jugador y sus atributos
+      // ============================================================
+        
+        // Guardar información del jugador
+
+        // Devuelve un resumen del estado del jugador
+
+        // Permite actualizar las vidas del jugador
+
+        // Actualiza la puntuación al acertar
+
+        // Reduce las vidas del jugador al fallar
+
+
+      class Jugador{
+        puntos = 0
+        constructor(nombre, vida, numeroSecreto){
+          this.nombre = nombre
+          this.vida = vida
+          this.numeroSecreto = numeroSecreto
+        }
+        get getVida(){
+          return this.vida
+        }
+        get getPuntos(){
+          return this.puntos
+        }
+        get getNombre(){
+          return this.nombre
+        }
+        get getNumeroSecreto(){
+          return this.numeroSecreto
+        }
+
+        acertar(){
+          puntos ++
+        }
+        fallar(){
+          vida --
+        }
+      }
+      let vida = 0
+      let nombre = ""
+      let numeroSecreto = 0
+
+      // ============================================================
+      // FUNCIÓN iniciarPartida: prepara los datos y empieza el juego
+      // ============================================================
+      
+        // Pedir datos del jugador y la dificultad
+
+        function Iniciar(){
+          nombre = prompt("Introduce su nombre")
+          dificultad = prompt("seleccione el nivel de dificultad: facil/normal/dificil")
+        
+
+        /*
+        Determinar los parámetros del juego según la dificultad:
+          facil -> 5 vidas y 10 intentos
+          normal -> 4 vidas y 20 intentos
+          dificil -> 3 vidas y 25 intentos
+          si el jugador no lo escribe bien -> 7 vidas y 2510 intentos
+        */
+
+        
+        if (dificultad == "facil"){
+          vida = 5
+        } else if (dificultad == "normal"){
+          vida = 4
+        } else if (dificultad == "dificil"){
+          vida = 3
+        } else {
+          vida = 7
+        }
+
+        
+        
+      
+        // Generar el número secreto y crear el jugador
+        
+        // Mostrar información inicial en pantalla
+
+        numeroSecreto = Math.floor(Math.random(1) * 10)
+        console.log(numeroSecreto)
+
+
+        const jugador = new Jugador(nombre, vida, numeroSecreto)
+
+        document.getElementById("info").innerHTML = `Numero entre 1 - 10. Jugador ${jugador.nombre} | Vidas: ${jugador.vida} | Puntos: ${jugador.puntos}`
+        }
+
+      // ============================================================
+      // FUNCIÓN intentarAdivinar: procesa los intentos del jugador
+      // ============================================================
+
+
+        
+        // Pedir un intento al jugador
+
+
+        // Evaluar el intento y actualizar puntos o vidas
+
+
+        // Actualizar el estado del jugador en pantalla
+
+        // Comprobar si el juego ha terminado
+
+        
+        function Adivinar(){
+          const jugador = new Jugador(nombre, vida, numeroSecreto)
+          
+          if (jugador.getVida < 0){
+             document.getElementById("resultado").innerHTML = `No te queda mas vida, intenta inicializar nueva partido. El numero secreto era ${jugador.getNumeroSecreto}`
+          } else {
+            numero = prompt("Adivina el numero de 1 - 10")
+
+          if (numero > jugador.getNumeroSecreto){
+            document.getElementById("resultado").innerHTML = `Fallaste el numero es menor`
+            jugador.fallar()
+            document.getElementById("info").innerHTML = `Numero entre 1 - 10. Jugador ${jugador.getNombre} | Vidas: ${jugador.getVida} | Puntos: ${jugador.getPuntos}`
+
+          } else if (numero < jugador.getNumeroSecreto){
+            document.getElementById("resultado").innerHTML = `Fallaste el numero es mayor`
+            jugador.fallar()
+            document.getElementById("info").innerHTML = `Numero entre 1 - 10. Jugador ${jugador.getNombre} | Vidas: ${jugador.getVida} | Puntos: ${jugador.getPuntos}`
+          }
+          else if (numero == jugador.getNumeroSecreto){
+            document.getElementById("resultado").innerHTML = `Felicitades el numero es correcto`
+            jugador.acertar()
+            document.getElementById("info").innerHTML = `Numero entre 1 - 10. Jugador ${jugador.getNombre} | Vidas: ${jugador.getVida} | Puntos: ${jugador.getPuntos}`
+          }
+
+          }
+          
+
+        }
+
+
+    </script>
+  </body>
+</html>

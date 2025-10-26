@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM HTML - estilos -</title>
+</head>
+<body>
+	<h1 id="id1">DOM - Cambiando el estilo de elementos HTML </h1>
+	<p>Lorem ipsum dolor sit amet consectetur adipiscing elit faucibus primis, mi natoque sagittis mauris tristique cursus maecenas phasellus elementum felis, hac facilisis non nam interdum fames curae senectus. Molestie phasellus in magnis lectus inceptos tincidunt aenean, ultrices nulla hendrerit tristique vulputate integer, duis sed fermentum conubia dapibus suscipit. Vestibulum mattis semper arcu diam in ornare tristique habitasse, molestie nec litora lacinia potenti sociosqu fermentum.</p> <p>Sagittis felis per pretium nulla velit curae consequat aliquam, aliquet class donec commodo sociosqu condimentum proin, tortor ad habitant dapibus et mauris curabitur. Integer pellentesque fermentum dictum elementum penatibus a montes ligula ridiculus est, varius magnis porta lacinia lobortis erat tempor nulla nostra.</p>
+	<button type="button" onclick="document.getElementById('id1').style.color='red'"> Pusa para escribir el encabezado en rojo </button> </br> 
+	<button type="button" onclick="aumentarFuente()"> Pulsa para aumentar fuente a 20px </button> </br><p>
+	<section id="enlaces"> 
+	<a href="javascript:void(volverTamanio())">Pulsa para volver tamaño fuente a 16px</a> <p>
+
+	<a href="javascript:void(document.body.style.backgroundColor = 'Yellow')">Cambia el color de fondo a yellow</a> <p>
+
+	<a href="javascript:void(document.body.style.backgroundColor = '#CDCDCD')">Cambia color fondo a - '#CDCDCD' -</a> <p>
+
+	<a href="javascript:void(tamanioSeccion())">Aumenta tamaño de la fuente solo de esta sección</a><p>
+	<a href="javascript:void(texto[5].style.fontSize = 16 + 'px')">Tamaño normal</a> <p>
+
+	<a href="javascript:void(texto[7].style.backgroundColor = 'yellow')">Cambia el color del fondo de esta sección</a><p>
+
+	<a href="javascript:void(texto[7].style.backgroundColor = 'white')">Color normal - 'white' -</a> <p>
+
+	<a href="#" onmouseover="texto[9].style.fontFamily = 'Comic Sans MS'" onmouseout="texto[9].style.fontFamily = 'Verdana'">Cambia la fuente de esta sección a Comic Sans al situar el ratón encima de este vínculo - retorna a Verdana al situar el ratón fuera del vículo </a></br>
+	</section>
+
+    <script>
+        let texto = document.getElementsByTagName("p")
+        function aumentarFuente(){
+            for (let i = 0; i < texto.length; i++) {
+                let currentSize = window.getComputedStyle(texto[i]).fontSize
+                let newSize = parseInt(currentSize) + 10
+                texto[i].style.fontSize = newSize + "px"
+            }
+        }
+
+        function volverTamanio(){
+            for (let i = 0; i < texto.length; i++) {
+                texto[i].style.fontSize = 16 + "px"
+                
+            }
+        }
+
+        function tamanioSeccion(){
+            let currentSize = window.getComputedStyle(texto[5]).fontSize
+            let newSize = parseInt(currentSize) + 10
+            texto[5].style.fontSize = newSize + "px"
+        }
+
+    </script>
+
+
+
+</body>
+</html>
