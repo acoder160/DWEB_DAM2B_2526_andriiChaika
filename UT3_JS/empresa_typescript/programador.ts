@@ -1,4 +1,6 @@
-class Programador extends Empleado {
+import { Empleado } from "./Empleado"
+
+export class Programador extends Empleado {
     lenguajePrincipal: string
     proyectosAsignados: number
 
@@ -15,5 +17,4 @@ class Programador extends Empleado {
     calcularBonus(): number{
         return this.calcularSalarioAnual() + ((Number(this.calcularSalarioAnual) * ((2 * this.proyectosAsignados) / 100))) //2% mas al salario anual por cada proyecto
     }
-
 }

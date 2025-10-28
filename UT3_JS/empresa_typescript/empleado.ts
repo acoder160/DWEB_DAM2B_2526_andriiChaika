@@ -1,4 +1,6 @@
-class Empleado {
+
+
+export class Empleado {
     nombre: string
     edad: number
     salario: number

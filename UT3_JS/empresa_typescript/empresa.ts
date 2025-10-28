@@ -1,6 +1,9 @@
-class Empresa {
-    empleados: Empleado[]
-    programadores: Programador[]
+import { Empleado } from "./Empleado"
+import { Programador } from "./Programador"
+
+export class Empresa {
+    public empleados: Empleado[]
+    public programadores: Programador[]
 
     constructor( empleados: Empleado[], programadores: Programador[]){
         this.empleados = empleados
@@ -25,5 +28,7 @@ class Empresa {
         }
         return coste
     }
+
+
 
 }
