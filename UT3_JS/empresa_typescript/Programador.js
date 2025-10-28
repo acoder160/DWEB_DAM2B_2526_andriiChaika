@@ -29,7 +29,7 @@ var Programador = /** @class */ (function (_super) {
         return "".concat(_super.prototype.toString.call(this), ", lenguaje: ").concat(this.lenguajePrincipal, ", proyectos asignados: ").concat(this.proyectosAsignados);
     };
     Programador.prototype.calcularBonus = function () {
-        return this.calcularSalarioAnual() + ((Number(this.calcularSalarioAnual) * ((2 * this.proyectosAsignados) / 100))); //2% mas al salario anual por cada proyecto
+        return this.calcularSalarioAnual() + ((Number(this.calcularSalarioAnual()) * ((2 * this.proyectosAsignados) / 100))); //2% mas al salario anual por cada proyecto
     };
     return Programador;
 }(Empleado_1.Empleado));

@@ -17,11 +17,11 @@ const google: Empresa = new Empresa(empleados, programadores)
 console.log("Lista de los empleados:")
 
 for (let i = 0; i < google.empleados.length; i++) {
-    console.log(google.empleados[i].toString())
+    console.log(google.empleados[i].toString(), " ", google.empleados[i].calcularSalarioAnual())
 }
 
 for (let i = 0; i < google.programadores.length; i++) {
-    console.log(google.programadores[i].toString())
+    console.log(google.programadores[i].toString(), " ", google.programadores[i].calcularBonus())
 }
 
 
