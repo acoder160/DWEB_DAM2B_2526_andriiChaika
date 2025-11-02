@@ -8,7 +8,7 @@ var Empleado = /** @class */ (function () {
         this.salario = salario;
     }
     Empleado.prototype.toString = function () {
-        return "empleado: ".concat(this.nombre, ", edad: ").concat(this.edad, ", salario: ").concat(this.salario);
+        return "".concat(this.nombre, " (").concat(this.edad, ") - ").concat(this.salario, "\u20AC/mes");
     };
     Empleado.prototype.calcularSalarioAnual = function () {
         return this.salario * 12;

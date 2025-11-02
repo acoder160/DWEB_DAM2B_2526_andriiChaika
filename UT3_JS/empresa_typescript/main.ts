@@ -1,5 +1,5 @@
-import { Empleado } from "./Empleado"
-import { Programador } from "./Programador"
+import { Empleado } from "./empleado"
+import { Programador } from "./programador"
 import { Empresa } from "./empresa"
 
 let empleados: Empleado[] = [
@@ -16,13 +16,19 @@ const google: Empresa = new Empresa(empleados, programadores)
 
 console.log("Lista de los empleados:")
 
+let costeAnual: number = 0
+
 for (let i = 0; i < google.empleados.length; i++) {
-    console.log(google.empleados[i].toString(), " ", google.empleados[i].calcularSalarioAnual())
+    console.log(google.empleados[i].toString())
+    costeAnual += google.empleados[i].calcularSalarioAnual()
 }
 
 for (let i = 0; i < google.programadores.length; i++) {
-    console.log(google.programadores[i].toString(), " ", google.programadores[i].calcularBonus())
+    console.log(google.programadores[i].toString())
+    costeAnual += google.programadores[i].calcularBonus()
 }
+
+console.log(`Coste total anual: ${costeAnual}.00 €`)
 
 
 

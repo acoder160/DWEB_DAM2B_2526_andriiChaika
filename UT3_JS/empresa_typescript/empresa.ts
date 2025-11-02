@@ -1,5 +1,5 @@
-import { Empleado } from "./Empleado"
-import { Programador } from "./Programador"
+import { Empleado } from "./empleado"
+import { Programador } from "./programador"
 
 export class Empresa {
     public empleados: Empleado[]
@@ -28,7 +28,5 @@ export class Empresa {
         }
         return coste
     }
-
-
 
 }

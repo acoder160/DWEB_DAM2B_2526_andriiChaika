@@ -1,4 +1,4 @@
-import { Empleado } from "./Empleado"
+import { Empleado } from "./empleado"
 
 export class Programador extends Empleado {
     lenguajePrincipal: string
@@ -11,7 +11,7 @@ export class Programador extends Empleado {
     }
 
     toString(): string {
-        return `${super.toString()}, lenguaje: ${this.lenguajePrincipal}, proyectos asignados: ${this.proyectosAsignados}`
+        return `${this.nombre} (${this.lenguajePrincipal}) - ${this.salario} €/mes - ${this.proyectosAsignados} - proyectos`
     }
 
     calcularBonus(): number{

@@ -13,7 +13,7 @@ export class Empleado {
     }
 
     toString(): string{
-        return `empleado: ${this.nombre}, edad: ${this.edad}, salario: ${this.salario}`
+        return `${this.nombre} (${this.edad}) - ${this.salario}€/mes`
     }
 
     calcularSalarioAnual(): number {
