@@ -4,6 +4,6 @@ import { Cliente } from "./Cliente"
 export interface Tienda{
 
     listarLibros(): Libro[];
-    venderLibro(cliente: Cliente, tituloLibro: string): string;
+    venderLibro(cliente: Cliente, tituloLibro: string): string; 
     mostrarCarrito(cliente: Cliente): void;
 }

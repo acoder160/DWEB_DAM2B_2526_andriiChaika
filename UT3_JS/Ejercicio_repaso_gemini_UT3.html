@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen DOM - Gestor de Tareas</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+        #container { background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 500px; margin: 0 auto 20px auto; }
+        h1 { text-align: center; margin-top: 0; }
+        
+        /* Estilos del formulario y lista (Tarea 0) */
+        #task-form { display: flex; margin-bottom: 15px; }
+        #task-input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+        #task-form button { padding: 10px 15px; margin-left: 10px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        #task-list { list-style: none; padding: 0; margin: 0; }
+        #task-list li { padding: 12px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        #task-list li button { background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+        .completed { text-decoration: line-through; color: #888; }
+        #info-msg { text-align: center; min-height: 1.2em; font-size: 0.9em; color: #555; }
+
+        /* Estilos para Tarea 1 y 2 (Estadísticas) */
+        #stats { background: #f9f9f9; border: 1px solid #eee; padding: 15px; border-radius: 4px; margin-top: 20px; }
+        #stats h3 { margin: 0 0 10px 0; }
+        #stats p { margin: 5px 0; }
+
+        /* Estilos para Tarea 5 (Captura de Eventos) */
+        #capture-test { margin: 20px auto; width: 500px; }
+        #div-externo { padding: 40px; background-color: #007bff; border-radius: 8px; text-align: center; color: white; }
+        #div-interno { padding: 20px; background-color: #fff; border-radius: 4px; color: #333; cursor: pointer; }
+        
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h1>Gestor de Tareas</h1>
+        
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="Escribe una nueva tarea..." />
+            <button type="submit">Añadir Tarea</button>
+        </form>
+        
+        <p id="info-msg"></p>
+        
+        <ul id="task-list">
+            </ul>
+        
+        <div id="stats">
+            <h3>Estadísticas</h3>
+            <p id="stats-total">Total de tareas: 0</p>
+            <p id="stats-completed">Tareas completadas: 0</p>
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <a id="void-link" href="#">Enlace de prueba (void)</a>
+        </div>
+    </div>
+
+    <div id="capture-test">
+        <h2>Prueba de Captura vs Burbujeo</h2>
+        <div id="div-externo">
+            Elemento Externo
+            <div id="div-interno">
+                Elemento Interno (Haz clic aquí)
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ¡Aquí va todo tu código JavaScript!
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // === PARTE 0: SELECCIÓN DE ELEMENTOS (Tarea 0, 1, 2, 5) ===
+            // 1. Selecciona TODOS los elementos necesarios del DOM y guárdalos en variables:
+            //    - El formulario 'task-form'
+            let taskForm = document.getElementById("task-form")
+
+            //    - El input 'task-input'
+            let taskInput = document.getElementById("task-input")
+
+            //    - La lista 'task-list'
+            let taskList = document.getElementById("task-list")
+
+            //    - El párrafo 'info-msg'
+            let infoMsg = document.getElementById("info-msg")
+
+            //    - El párrafo 'stats-total'
+            let statsTotal = document.getElementById("stats").getElementsByTagName("p")[0]
+
+            //    - El párrafo 'stats-completed'
+            let statsCompleted = document.getElementById("stats").getElementsByTagName("p")[1]
+
+            //    - El div 'div-externo'
+            let divExterno = document.getElementById("div-externo")
+
+            //    - El div 'div-interno'
+            let divInterno = document.getElementById("div-interno")
+
+            //    - El enlace 'void-link'
+            let voidLink = document.getElementById("void-link")
+
+
+            // === PARTE 1: MANEJO DE FORMULARIOS (Refuerzo Tarea 0) ===
+
+
+            // 2. Añade un 'event listener' al formulario 'task-form' para el evento 'submit'.
+            //    (Nota: Usar 'submit' en el <form> es mejor que 'click' en el <button>).
+            taskForm.addEventListener("submit", function(event){
+
+            // 3. Dentro del 'submit' listener:
+            //    a. ¡Evita que el formulario se envíe de verdad! (Usa event.preventDefault()).
+            //    b. Llama a la función 'addTask()' (que crearás en el paso 5).
+            
+
+                event.preventDefault()
+                addTask()
+
+            })
+            
+            
+            // === PARTE 2: LÓGICA DE TAREAS (Tarea 0) ===
+            // 4. Añade UN 'event listener' de 'click' a 'task-list' (Delegación de eventos).
+            //    a. Dentro, usa 'event.target' para saber qué se clicó.
+            //    b. Si fue un 'BUTTON' (tagName), llama a 'deleteTask(event.target)'.
+            //    c. Si fue un 'LI' o 'SPAN', llama a 'toggleTask(event.target)'.
+            taskList.addEventListener("click", function(event){
+                const elemento = event.target
+                if (elemento.tagName === "BUTTON"){
+                    deleteTask(elemento)
+                }
+                if (elemento.tagName === "LI" || elemento.tagName === "SPAN"){
+                    toggleTask(elemento)
+                }
+            })
+
+
+            //
+            // 5. Crea la función 'addTask()':
+            //    a. Obtén el texto del 'task-input'.
+            //    b. Si está vacío, no hagas nada (o muestra un error en 'info-msg').
+            //    c. Si hay texto:
+            //       - Crea <li>, <span> (para el texto) y <button> (para eliminar).
+            //       - Asigna el texto al <span> (usa .textContent).
+            //       - Añádelos al <li> y el <li> a la 'task-list'.
+            //       - Limpia el input.
+            //       - Llama a 'updateStats()' (Paso 8).
+            function addTask(){
+                if (taskInput.value.trim() === ""){
+                    infoMsg.textContent = "La tarea no puede estar vacía."
+                    return
+                } else {
+                    const li = document.createElement("li")
+                    const span = document.createElement("span")
+                    const button = document.createElement("button")
+                    button.innerHTML = "Eliminar"
+                    span.textContent = taskInput.value
+                    li.appendChild(span)
+                    li.appendChild(button)
+                    taskList.appendChild(li)
+                    taskInput.value = ""
+                    updateStats()
+                }
+            }
+            //
+            // 6. Crea la función 'deleteTask(deleteButton)':
+            //    a. Encuentra el <li> padre del botón (button.parentNode).
+            //    b. Elimínalo de 'task-list' (list.removeChild(liPadre)).
+            //    c. Llama a 'updateStats()'.
+            function deleteTask(deleteButton){
+                const li = deleteButton.parentNode
+                taskList.removeChild(li)
+                updateStats()
+            }
+
+
+
+            // 7. Crea la función 'toggleTask(clickedElement)':
+            //    a. Asegúrate de tener el elemento <li> (si clicó el <span>, sube al padre).
+            //    b. Usa 'li.classList.toggle('completed')'.
+            //    c. Llama a 'updateStats()'.
+            function toggleTask(clickedElement){
+                let li
+                if (clickedElement.tagName == "span"){
+                    li = clickedElement.parentNode
+                } else {
+                    li = clickedElement
+                }
+                li.classList.toggle('completed')
+                updateStats();
+
+            }
+            
+            
+            // === PARTE 3: ACCESO Y MODIFICACIÓN (Tarea 1 y 2) ===
+            // 8. Crea la función 'updateStats()':
+            //    a. Selecciona TODAS las tareas (<li>) dentro de 'task-list'.
+            //       ¡Usa getElementsByTagName sobre la variable 'task-list'! (ej: taskList.getElementsByTagName('li')).
+            //
+            //    b. Obtén el número total de tareas (será el .length de la colección anterior).
+            //
+            //    c. Cuenta cuántas tareas tienen la clase 'completed'.
+            //       (Itera sobre la colección de <li> y comprueba 'li.classList.contains('completed')').
+            //
+            //    d. Actualiza el .textContent de 'stats-total' y 'stats-completed' con esos números.
+            function updateStats(){
+                let elementos = taskList.getElementsByTagName("li")
+                let total = elementos.length
+                let contador = 0
+                for (let i = 0; i < total; i++) {
+                    if (elementos[i].classList.contains('completed')){
+                        contador ++
+                    }
+                }
+                statsTotal.textContent = `Total elementos: ${total}`
+                statsCompleted.textContent = `Total tareas hecho: ${contador}`
+            }
+
+
+            // === PARTE 4: OTROS EVENT HANDLERS (Tarea 5) ===
+            // 9. Añade un 'event listener' a 'task-list' para 'mouseover'.
+            //    - Cuando ocurra, cambia el .textContent de 'info-msg' a "Estás sobre la lista de tareas".
+            
+            taskList.addEventListener("mouseover", function(){
+                infoMsg.textContent = "Estas sobre la lisa de tareas"
+            })
+
+
+            // 10. Añade un 'event listener' a 'task-list' para 'mouseout'.
+            //    - Cuando ocurra, limpia el .textContent de 'info-msg'.
+            taskList.addEventListener("mouseout", function(){
+                infoMsg.textContent = ""
+            })
+            
+            
+            // === PARTE 5: CAPTURA DE EVENTOS (Tarea 5) ===
+            // 11. Añade un 'event listener' de 'click' a 'div-externo'.
+            //     - En la función, muestra un alert('Clic en EXTERNO (Fase de Captura)').
+            //     - ¡Importante! Añade el tercer parámetro 'useCapture' como 'true'.
+            //       (ej: elemento.addEventListener('click', miFunc, true)).
+            
+            divExterno.addEventListener("click", function(){
+                alert("Clieck en EXTERNO (Fase de Captura)")
+            }, true)
+
+
+            // 12. Añade un 'event listener' de 'click' a 'div-interno'.
+            //     - En la función, muestra un alert('Clic en INTERNO (Fase de Burbuja)').
+            //     - Déjalo con 'useCapture' en 'false' (o no lo pongas, es el defecto).
+            //
+            // 13. (PRUEBA) Haz clic en el 'Elemento Interno'. Deberías ver el alert "EXTERNO" PRIMERO.
+
+            divInterno.addEventListener("click", function(){
+                 alert("Clic en INTERNO (Fase de Burbuja)");
+            })
+
+
+            // === PARTE 6: MÉTODO VOID (Tarea 4) ===
+
+            // 14. Modifica el enlace 'void-link'.
+            // [cite_start]//     - El PDF de Tarea 4 explica que 'javascript:void()' es una mala práctica [cite: 446-449].
+            // [cite_start]//     - Pero el ejercicio pide usarlo[cite: 454].
+            //     - Cambia el atributo 'href' del enlace 'void-link' USANDO JAVASCRIPT (elemento.setAttribute).
+            //     - El nuevo 'href' debe ser: "javascript:void(document.getElementById('stats-total').textContent = 'Estadísticas limpiadas por void()')"
+            //     - (Hacer esto con JS es raro, pero demuestra que sabes modificar atributos).
+
+            voidLink.setAttribute('href', 'javascript:void(document.getElementById("stats-total").textContent = "Estadicsticas limpiada por void")')
+            
+            // === INICIALIZACIÓN ===
+            // 15. Llama a 'updateStats()' una vez al cargar la página para que muestre "0".
+            updateStats()
+            
+
+        }); // Fin del 'DOMContentLoaded'
+
+    </script>
+</body>
+</html>
