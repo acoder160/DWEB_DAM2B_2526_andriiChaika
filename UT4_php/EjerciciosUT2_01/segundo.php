@@ -30,7 +30,7 @@
                     <p>Altura: $altura</p>
                     <p>Modulo: $modulo</p>
                     <p>Horas: " . horas . "</p>
-                    <p>Algo pendiente de primero?: " . ($pendientes? "1" : "0") . "</p>" 
+                    <p>Algo pendiente de primero?: " . ($pendientes? "1" : "0") . "</p>" ;
                  
              ?>
     </body>
