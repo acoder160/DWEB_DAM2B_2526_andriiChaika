@@ -1,0 +1,236 @@
+﻿/* Estilos para los elementos HTML*/
+body {
+    margin-top: 0;
+    background-color: rgb(128, 141, 159);
+    background: -moz-linear-gradient(left, rgba(221,151,220,1) 0%, 
+        rgba(209,117,203,1) 50%, rgba(209,0,188,1) 51%, rgba(230,112,214,1) 100%);
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 14px;
+
+
+}
+h1 {
+    font-size: 150%;
+    margin: 0;
+    padding: .5em 0 .25em;
+}
+h2 {
+    font-size: 120%;
+    margin: 0;
+    padding: .25em 0 .5em;
+}
+h1, h2  {
+    color: rgb(205, 163, 94);
+}
+h4 {
+    color: rgb(119, 75, 77);
+    padding: 2em;
+}
+
+ul {
+    margin: 0 0 1em 0;
+    padding: 10px 0 0 2.5em;
+}
+li {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td, th {
+    border: 1px dashed black;
+    padding: .2em .5em .2em .5em;
+    vertical-align: top;
+    text-align: left;
+}
+form {
+    margin: 0;
+}
+br {
+    clear: left;
+}
+
+/* estilos para las secciones div */
+#contenido {
+    width: 70%;
+    margin: 20px auto;
+    background-color: white;
+    border: 1px solid rgb(119, 75, 77);
+}
+#cabecera {
+    margin: 0;
+    border-bottom: 2px solid rgb(119, 75, 77);
+    padding: .5em 2em;
+}
+#cabecera h1 {
+    margin: 0;
+    padding: .5em;
+    color: black;
+}
+#principal {
+    margin: 0;
+    padding: .5em 2em;
+    min-height: 400px;
+
+}
+
+#menu {
+    background-color: indianred;
+    width: 30%;
+    float: left;
+    min-height: 300px;
+
+
+}
+
+#menu a {
+    color: white;
+    text-decoration: none;
+}
+
+#menu a:hover {
+    color: rgb(128, 141, 159);
+}
+#menu ul {     
+    list-style-type: none;
+
+}
+#menu ul li#inicio {
+    border-bottom: 1px solid midnightblue; 
+    width: 80%;
+}
+
+#menu ul li {
+    padding: 0.7em;  
+}
+
+
+
+#pie {
+    clear: both;
+    margin-top: 2em;
+    padding-right: 1em;
+    border-top: 2px solid rgb(119, 75, 77);
+}
+#pie p {
+    text-align: right;
+    font-size: 80%;
+    margin: 1em 0;
+}
+
+
+/********************************************************************
+* Estilos para el formulario
+********************************************************************/
+#form {
+    margin: .5em 0 2em;
+
+}
+#form label {
+    width: 12em;
+    padding-right: 1em;
+    float: left;
+    text-align: right;
+    font-weight: bold;
+}
+#form input {
+    float: left;
+    width: 15em;
+    border: 1px solid  rgb(119, 75, 77);
+    margin-bottom: 20px;
+
+}
+#form input[type='text'] {
+    width: 15em;
+}
+#form input[type='radio'] {
+    width: 4em;
+    margin-left: 2em;
+}
+#activo,   #parado{
+    float: left;
+}
+
+
+#form input[type='checkbox'] {
+    width: 2em;
+    margin-left: 5em;
+}
+
+#form p {
+    margin-left: 10em;
+    margin-bottom: 3px;
+
+}
+
+#form input[type='submit'] {
+    width: 10em;
+    margin-top: 1em;
+
+}
+
+#form  select {
+    margin-left: 12em;
+    width: 12em;
+    margin-bottom: 20px;
+}
+#form  select#dia, select#mes, select#anio, select#nivel {
+    margin-left: 0.5em;
+    width: 6em;
+    margin-bottom: 20px;
+    border: 1px solid  rgb(119, 75, 77);
+    float: left;
+}
+#form   select#nivel {
+    margin-left: 0.5em;
+    width: 8em;
+    margin-bottom: 20px;
+    border: 1px solid  rgb(119, 75, 77);
+    float: left;
+}
+#form  select#perfil {
+    margin-left: 0.5em;
+    width: 10em;
+    margin-bottom: 20px;
+    border: 1px solid  rgb(119, 75, 77);
+    float: left;
+}
+
+#form  textarea{
+    float: left;
+    margin-bottom: 20px;
+}
+#form  fieldset{
+    border: 1px dotted brown;
+    width: 90%;
+}
+#form  legend{
+    padding: 5px;
+    color: brown;
+    font-weight: bold;
+}
+#form  .idioma{
+    display:inline;
+}
+#form .idioma label{
+    width: 3em;
+    padding-right: 1em;
+    font-weight: normal;
+
+}
+#form  .situacion{
+    width: 1em;
+    padding-right: 0.5em;
+    font-weight: normal;
+}
+
+.resultado {
+    padding: 10px;
+    background-color: peachpuff;
+    border: 1px solid blueviolet;
+}

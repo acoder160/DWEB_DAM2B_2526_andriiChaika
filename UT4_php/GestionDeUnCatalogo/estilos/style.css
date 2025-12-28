@@ -1,0 +1,13 @@
+/* Estilo para todas las tablas */
+table {
+  border-collapse: collapse; /* Esto es clave para evitar doble borde */
+  width: 100%; /* O el ancho que desees */
+}
+
+/* Estilo para celdas (td) y encabezados (th) */
+th, td {
+  border: 1px solid black; /* Aquí ajustas el grosor (1px), el estilo (solid) y el color (black) */
+  padding: 8px;
+  text-align: left;
+}
+
