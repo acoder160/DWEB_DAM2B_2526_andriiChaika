@@ -1,13 +1,33 @@
+<h2>Lista de Deportistas Registrados</h2>
 
+<?php
+if (empty($_SESSION['deportistas'])) {
+    echo "<p>No se han encontrado datos de deportistas.</p>";
+} else {
+    $agrupados = array();
 
-<main>
-    <h1>Listado de Deportistas</h1>
-    <?php
-    // Comprueba si hay deportistas registrados en $_SESSION['deportistas']
-    // Si no hay deportistas, muestra un mensaje indicando que no hay datos para mostrar.
+    foreach ($_SESSION['deportistas'] as $d) {
+        // un deportista puede tener varios deportes, recorremos sus deportes
+        foreach ($d['deportes'] as $deporte) {
+            $agrupados[$deporte][] = $d; // añadimos el deportista
+        }
+    }
 
-    // Si hay deportistas:
-    // - Agrupa los deportistas por deporte.
-    // - Muestra una tabla para cada deporte con el nombre, apellido y horario de los deportistas.
-    ?>
-</main>
+    // tablas por cada deporte
+    foreach ($agrupados as $deporteNombre => $listaDeportistas) {
+        echo "<h3>" . $deporteNombre . "</h3>";
+        echo "<table>";
+        echo "<tr><th>Nombre</th><th>Apellido</th><th>Horario</th></tr>";
+        
+        foreach ($listaDeportistas as $p) {
+            echo "<tr>";
+            echo "<td>" . $p['nombre'] . "</td>";
+            echo "<td>" . $p['apellido'] . "</td>";
+            echo "<td>" . $p['horario'] . "</td>";
+            echo "</tr>";
+        }
+        
+        echo "</table>";
+    }
+}
+?>
