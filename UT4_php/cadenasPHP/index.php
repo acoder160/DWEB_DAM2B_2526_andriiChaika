@@ -44,6 +44,7 @@
                     $nombreFormateado = ucwords(strtolower($nombreLimpio));
                     $username = strtolower(str_replace(" ", "", $nombreLimpio));
 
+
                     // ---------------------------------------------------
                     // SALIDA (No tocar HTML, solo las variables PHP)
                     // ---------------------------------------------------
@@ -80,15 +81,16 @@
                     // ---------------------------------------------------
                     // TODO: ESCRIBE TU CÓDIGO AQUÍ
                     // ---------------------------------------------------
-
-                    $arrayTags = explode(",", $tagsInput);
+                    $arraysTags = explode(",", $tagsInput);
                     $tagsLimpios = [];
 
-                    foreach($arrayTags as $tag) {
-                        $tagsLimpios[] = strtolower(trim($tag));
+                    foreach ($arraysTags as $tag) {
+                        $tagsLimpios = strtolower(trim($tag));
                     }
 
-                    $slugFinal = implode("-", $tagsLimpios);
+
+                    $slugFinal = implode("-", $tagsLimpios); //impode - une el array
+
 
                     // ---------------------------------------------------
                     echo "Slug URL: <strong>$slugFinal</strong>";
@@ -109,67 +111,73 @@
                     2. Elimina barras invertidas (\) sobrantes.
                     3. Convierte caracteres especiales a entidades HTML.
                     4. Valida: Si longitud < 10, muestra error.
+                        </div>
+
+                        <?php
+                        // --- DATOS DE ENTRADA ---
+                        $comentarioInput = "<script>alert('Hack');</script> Me gusta mucho el post, pero It\'s complicated.";
+                        ?>
+
+                        <div class="console">
+                            <span class="label">Entrada (Raw): <?php echo htmlspecialchars($comentarioInput); ?></span>
+                            <hr>
+
+                            <?php
+                            // ---------------------------------------------------
+                            // TODO: ESCRIBE TU CÓDIGO AQUÍ
+                            // ---------------------------------------------------
+
+                            $textoSeguro = stripslashe(strip_tags($comentarioInput));
+
+
+                            $comentarioSeguro = htmlspecialchars($textoSeguro); // Sustituir
+
+                            
+                            if(strlen($comentarioSeguro) < 10) {
+                                $comentarioSeguro = "Error: Comentario demasiado corto o vacio";
+                            }
+
+
+                            // ---------------------------------------------------
+                            // SALIDA
+                            // ---------------------------------------------------
+                            // Nota: Tu código debe decidir si mostrar el comentario o el error
+                            // Ejemplo simple de visualización:
+                            echo "Resultado: <strong>$comentarioSeguro</strong>";
+                            ?>
+                        </div>
                 </div>
+            </div>
 
-                <?php
-                // --- DATOS DE ENTRADA ---
-                $comentarioInput = "<script>alert('Hack');</script> Me gusta mucho el post, pero It\'s complicated.";
-                ?>
-
-                <div class="console">
-                    <span class="label">Entrada (Raw): <?php echo htmlspecialchars($comentarioInput); ?></span>
-                    <hr>
+            <div class="ticket priority-med">
+                <div class="ticket-header">
+                    <span>Ticket #004: Filtro de Palabras</span>
+                    <span class="badge bg-orange">Media Prioridad</span>
+                </div>
+                <div class="ticket-body">
+                    <div class="instructions">
+                        <strong>Requerimiento:</strong>
+                        1. Busca la palabra prohibida (insensible a mayúsculas/minúsculas).
+                        2. Si existe: Reemplázala por ****** y muestra el índice donde apareció.
+                        3. Si no existe: Muestra la frase original.
+                    </div>
 
                     <?php
-                    // ---------------------------------------------------
-                    // TODO: ESCRIBE TU CÓDIGO AQUÍ
-                    // ---------------------------------------------------
-
-                    $textoSeguro = stripslashes(strip_tags($comentarioInput));
-                    $comentarioSeguro = htmlspecialchars($textoSeguro);
-
-                    if(strlen($comentarioSeguro) < 10) {
-                        $comentarioSeguro = "Error: Comentario demasiado corto o vacio";
-                    }
-
-                    // ---------------------------------------------------
-                    // SALIDA
-                    // ---------------------------------------------------
-                    echo "Resultado: <strong>$comentarioSeguro</strong>";
+                    // --- DATOS DE ENTRADA ---
+                    $frase = "Este producto es una BASURA y no sirve";
+                    $prohibida = "basura";
                     ?>
-                </div>
-            </div>
-        </div>
 
-        <div class="ticket priority-med">
-            <div class="ticket-header">
-                <span>Ticket #004: Filtro de Palabras</span>
-                <span class="badge bg-orange">Media Prioridad</span>
-            </div>
-            <div class="ticket-body">
-                <div class="instructions">
-                    <strong>Requerimiento:</strong>
-                    1. Busca la palabra prohibida (insensible a mayúsculas/minúsculas).
-                    2. Si existe: Reemplázala por ****** y muestra el índice donde apareció.
-                    3. Si no existe: Muestra la frase original.
-                </div>
+                    <div class="console">
+                        <span class="label">Frase: "<?php echo $frase; ?>" | Prohibida: "<?php echo $prohibida; ?>"</span>
+                        <hr>
 
-                <?php
-                // --- DATOS DE ENTRADA ---
-                $frase = "Este producto es una BASURA y no sirve";
-                $prohibida = "basura";
-                ?>
+                        <?php
+                        // ---------------------------------------------------
+                        // TODO: ESCRIBE TU CÓDIGO AQUÍ
+                        // ---------------------------------------------------
 
-                <div class="console">
-                    <span class="label">Frase: "<?php echo $frase; ?>" | Prohibida: "<?php echo $prohibida; ?>"</span>
-                    <hr>
-
-                    <?php
-                    // ---------------------------------------------------
-                    // TODO: ESCRIBE TU CÓDIGO AQUÍ
-                    // ---------------------------------------------------
-
-                    $posicion = stripos($frase, $prohibida);
+                         $posicion = stripos($frase, $prohibida);
 
                     if ($posicion !== false) {
                         $fraseFinal = str_ireplace($prohibida, "******", $frase);
@@ -177,55 +185,50 @@
                     } else {
                         echo "Resultado: <strong>$frase</strong>";
                     }
-                    ?>
+                        ?>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="ticket priority-low">
-            <div class="ticket-header">
-                <span>Ticket #005: Extracto Inteligente</span>
-                <span class="badge bg-blue">Baja Prioridad</span>
-            </div>
-            <div class="ticket-body">
-                <div class="instructions">
-                    <strong>Requerimiento:</strong>
-                    1. Si el texto > 50 chars, córtalo.
-                    2. El corte debe ser en el último espacio disponible antes de los 50 chars.
-                    3. Añade "..." al final y asegura mayúscula inicial.
+            <div class="ticket priority-low">
+                <div class="ticket-header">
+                    <span>Ticket #005: Extracto Inteligente</span>
+                    <span class="badge bg-blue">Baja Prioridad</span>
                 </div>
-
-                <?php
-                // --- DATOS DE ENTRADA ---
-                $textoLargo = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-                ?>
-
-                <div class="console">
-                    <span class="label">Texto original (<?php echo strlen($textoLargo); ?> chars):</span>
-                    <p style="font-size:0.8em; margin:5px 0 15px 0; opacity:0.7;"><?php echo $textoLargo; ?></p>
-                    <hr>
+                <div class="ticket-body">
+                    <div class="instructions">
+                        <strong>Requerimiento:</strong>
+                        1. Si el texto > 50 chars, córtalo.
+                        2. El corte debe ser en el último espacio disponible antes de los 50 chars (no cortar palabras a la mitad).
+                        3. Añade "..." al final y asegura mayúscula inicial.
+                    </div>
 
                     <?php
-                    // ---------------------------------------------------
-                    // TODO: ESCRIBE TU CÓDIGO AQUÍ
-                    // ---------------------------------------------------
-
-                    if (strlen($textoLargo) > 50) {
-                        $corte = substr($textoLargo, 0, 50);
-                        $ultimoEspacio = strrpos($corte, " ");
-                        $extracto = ucfirst(substr($corte, 0, $ultimoEspacio)) . "...";
-                    } else {
-                        $extracto = ucfirst($textoLargo);
-                    }
-
-                    // ---------------------------------------------------
-                    echo "Extracto generado: <strong>$extracto</strong>";
+                    // --- DATOS DE ENTRADA ---
+                    $textoLargo = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
                     ?>
+
+                    <div class="console">
+                        <span class="label">Texto original (<?php echo strlen($textoLargo); ?> chars):</span>
+                        <p style="font-size:0.8em; margin:5px 0 15px 0; opacity:0.7;"><?php echo $textoLargo; ?></p>
+                        <hr>
+
+                        <?php
+                        // ---------------------------------------------------
+                        // TODO: ESCRIBE TU CÓDIGO AQUÍ
+                        // ---------------------------------------------------
+
+                        $extracto = "Pendiente..."; // Sustituir
+
+
+                        // ---------------------------------------------------
+                        echo "Extracto generado: <strong>$extracto</strong>";
+                        ?>
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
 
 </body>
 

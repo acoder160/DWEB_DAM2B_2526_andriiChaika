@@ -1,0 +1,121 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 40px;
+}
+
+.ticket {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    overflow: hidden;
+    border-left: 6px solid;
+}
+
+.ticket-header {
+    padding: 15px 20px;
+    background: #ecf0f1;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket-body {
+    padding: 20px;
+}
+
+.priority-high {
+    border-left-color: #e74c3c;
+}
+
+.priority-med {
+    border-left-color: #f39c12;
+}
+
+.priority-low {
+    border-left-color: #3498db;
+}
+
+.priority-crit {
+    border-left-color: #8e44ad;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: white;
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
+.bg-red {
+    background-color: #e74c3c;
+}
+
+.bg-orange {
+    background-color: #f39c12;
+}
+
+.bg-blue {
+    background-color: #3498db;
+}
+
+.bg-purple {
+    background-color: #8e44ad;
+}
+
+.instructions {
+    background: #fff8e1;
+    padding: 10px;
+    border-left: 4px solid #ffc107;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.console {
+    background: #282c34;
+    color: #abb2bf;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    margin-top: 15px;
+}
+
+.console strong {
+    color: #98c379;
+}
+
+/* Green for success */
+.console .error {
+    color: #e06c75;
+}
+
+/* Red for error */
+.label {
+    color: #5c6370;
+    font-size: 0.85em;
+    display: block;
+    margin-bottom: 5px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
