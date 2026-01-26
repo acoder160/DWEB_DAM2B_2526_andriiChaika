@@ -1,0 +1,174 @@
+/* =========================================
+   1. ESTILOS GENERALES Y RESET
+   ========================================= */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna y limpia */
+    background-color: #f4f4f4; /* Fondo gris claro como en la captura */
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff; /* Azul estándar para enlaces */
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   2. ENCABEZADO (HEADER)
+   ========================================= */
+header {
+    background-color: #333; /* Fondo oscuro */
+    color: #fff;            /* Texto blanco */
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+/* Navegación dentro del header */
+header nav a {
+    color: #fff;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    color: #ccc;
+    text-decoration: none;
+}
+
+/* =========================================
+   3. CONTENEDOR PRINCIPAL
+   ========================================= */
+.container {
+    max-width: 800px; /* Ancho máximo para que no se estire demasiado */
+    margin: 0 auto;   /* Centrado horizontal */
+    padding: 0 20px;
+}
+
+/* Botón de "Nueva Tarea" destacado */
+.btn-add {
+    display: inline-block;
+    background-color: #28a745; /* Verde */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.btn-add:hover {
+    background-color: #218838;
+    color: white;
+    text-decoration: none;
+}
+
+/* =========================================
+   4. LISTA DE TAREAS (CARDS)
+   ========================================= */
+.task-card {
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 15px; /* Separación entre tareas */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra suave */
+    transition: transform 0.2s;
+}
+
+.task-card:hover {
+    transform: translateY(-2px); /* Pequeño efecto al pasar el ratón */
+}
+
+.task-card h3 {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+/* Acciones (enlaces de borrar/completar) */
+.actions {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    font-size: 0.9em;
+}
+
+.text-danger {
+    color: #dc3545; /* Rojo para borrar */
+    margin-left: 10px;
+}
+
+/* ESTILO PARA TAREAS COMPLETADAS */
+/* Se añade un borde verde a la izquierda y se atenúa el texto */
+.task-card.completed {
+    border-left: 5px solid #28a745;
+    background-color: #f9f9f9;
+}
+
+.task-card.completed h3 {
+    text-decoration: line-through; /* Tachar el título */
+    color: #888;
+}
+
+.task-card.pending {
+    border-left: 5px solid #ffc107; /* Amarillo/Naranja para pendientes */
+}
+
+/* =========================================
+   5. FORMULARIO (AÑADIR TAREA)
+   ========================================= */
+form {
+    background: #fff;
+    padding: 25px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Para que el padding no rompa el ancho */
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para el botón de cancelar dentro del formulario */
+form a {
+    margin-left: 15px;
+    color: #666;
+}
